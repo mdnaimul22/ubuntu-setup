@@ -6,6 +6,6 @@ This repository contains an essential setup script for Ubuntu. It installs vario
 
 1. Clone the repository:
    ```bash
-   wget -O ubuntu_setup.sh https://github.com/crypto-kotha/ubuntu-setup/blob/main/ubuntu_setup.sh && sudo chmod +x ubuntu_setup && ./ubuntu_setup
+   sudo rm -rf ubuntu_setup.sh && wget https://raw.githubusercontent.com/crypto-kotha/ubuntu-setup/main/ubuntu_setup.sh && sudo chmod +x ubuntu_setup.sh && ./ubuntu_setup.sh
 
 This script will automatically update your system, install essential packages, and configure Docker, Node.js, Python, and Miniconda.
