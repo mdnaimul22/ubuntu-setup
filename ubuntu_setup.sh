@@ -22,7 +22,16 @@ sudo curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 
 # Install dependencies
 echo -e "${YELLOW}Installing dependencies...${RESET}"
-sudo apt install -y build-essential curl wget git unzip zip software-properties-common python3 python3-pip nodejs docker-ce docker-ce-cli containerd.io google-chrome-stable gnupg2 lsb-release apache2-utils ufw ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4
+sudo apt install -y build-essential curl wget git unzip zip lzip htop software-properties-common python3 python3-pip nodejs docker-ce docker-ce-cli containerd.io google-chrome-stable gnupg2 lsb-release apache2-utils ufw ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4
+
+# Install Google Chrome
+echo -e "${YELLOW}Installing Google Chrome...${RESET}"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+sudo mkdir -p /etc/apt/keyrings
+wget -qO - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /etc/apt/keyrings/google-chrome.asc > /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/google-chrome.asc] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt update && sudo apt install google-chrome-stable -y
 
 # Add Docker GPG key
 echo -e "${CYAN}Adding Docker GPG key...${RESET}"
