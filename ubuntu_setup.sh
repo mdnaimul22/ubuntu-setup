@@ -14,7 +14,7 @@ echo -e "${CYAN}Starting System Upgrade...${RESET}"
 
 # Update and upgrade system
 echo -e "${YELLOW}Updating and upgrading the system...${RESET}"
-sudo apt-get update && sudo apt-get -y upgrade && sudo apt -y autoremove
+sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove
 
 # Install Node.js
 echo -e "${YELLOW}Installing Node.js_v20...${RESET}"
@@ -22,7 +22,7 @@ sudo curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 
 # Install dependencies
 echo -e "${YELLOW}Installing dependencies...${RESET}"
-sudo apt install -y build-essential curl wget git unzip zip software-properties-common python3 python3-pip nodejs docker-ce docker-ce-cli containerd.io gnupg2 lsb-release apache2-utils ufw ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4
+sudo apt install -y build-essential curl wget git unzip zip software-properties-common python3 python3-pip nodejs docker-ce docker-ce-cli containerd.io google-chrome-stable gnupg2 lsb-release apache2-utils ufw ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4
 
 # Add Docker GPG key
 echo -e "${CYAN}Adding Docker GPG key...${RESET}"
@@ -47,8 +47,12 @@ sudo chmod +x /usr/local/bin/docker-compose
 echo -e "${CYAN}Starting Docker...${RESET}"
 sudo systemctl enable docker
 sudo systemctl daemon-reload
-sudo systemctl stop docker
-sudo systemctl start docker
+sudo systemctl stop docker.service
+sudo systemctl stop docker.socket
+sudo systemctl stop docker.service
+sudo systemctl start docker.service
+sudo systemctl start docker.socket
+
 
 # Install Miniconda
 echo -e "${YELLOW}Installing Miniconda...${RESET}"
